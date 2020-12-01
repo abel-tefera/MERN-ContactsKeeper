@@ -28,7 +28,7 @@ const AuthState = (props) => {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   const loadUser = async () => {
-    if (localStorage.token){
+    if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
     try {
@@ -78,10 +78,16 @@ const AuthState = (props) => {
     } finally {
       dispatch({ type: SET_LOADING, payload: false });
     }
-  }
+  };
 
   const clearErrors = () => {
     dispatch({ type: CLEAR_ERRORS });
+  };
+
+  const logout = () => {
+    // dispatch({ type: SET_LOADING, payload: true });
+    dispatch({ type: LOGOUT });
+    // dispatch({ type: SET_LOADING, payload: false });
   };
 
   return (
@@ -96,6 +102,7 @@ const AuthState = (props) => {
         login,
         clearErrors,
         loadUser,
+        logout,
       }}
     >
       {props.children}

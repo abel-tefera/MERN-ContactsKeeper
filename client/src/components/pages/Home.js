@@ -3,13 +3,15 @@ import Contacts from "../contacts/Contacts";
 import ContactForm from "../contacts/ContactForm";
 import ContactFilter from "../contacts/ContactFilter";
 import AuthContext from "../../context/auth/authContext";
+// import ContactContext from "../../context/contact/contactContext";
 
 const Home = () => {
   const authContext = useContext(AuthContext);
-
+  // const contactContext = useContext(ContactContext);
   useEffect(() => {
     if (!authContext.isAuthenticated) {
       authContext.loadUser();
+      // contactContext.getContacts();
     }
     // eslint-disable-next-line
   }, []);
